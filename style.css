@@ -1,0 +1,291 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:  #1A0A2E;
+      --plum:  #2D1052;
+      --gold:  #D4A843;
+      --gold-lt: #F0C96A;
+      --cream: #FAF6EE;
+      --fog:   #F0EBE0;
+      --text:  #1C1C1C;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.75;
+    }
+
+    /* ══ HERO — equivalent of fCC's #main / #title / #img-div ══ */
+    #main {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--deep);
+    }
+
+    /* img-div pattern: image should be block, centered, max-width 100% of parent */
+    #img-div {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.45;
+    }
+
+    #main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, var(--deep) 30%, transparent 80%),
+        linear-gradient(to right, var(--deep) 0%, transparent 55%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 6vw, 5rem);
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    #title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    #title span {
+      display: block;
+      color: var(--gold-lt);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* tagline — "one-line tagline" requirement */
+    .tagline {
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 44ch;
+      line-height: 1.6;
+    }
+
+    #img-caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      z-index: 2;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ══ QUOTE — figure/blockquote pattern from fCC tribute page ══ */
+    .quote-band {
+      background: var(--gold);
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
+    }
+
+    .quote-band blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--deep);
+      max-width: 65ch;
+      line-height: 1.35;
+    }
+
+    .quote-band blockquote::before {
+      content: '\201C';
+      font-size: 5rem;
+      line-height: 0;
+      vertical-align: -1.5rem;
+      margin-right: 0.15rem;
+      opacity: 0.25;
+      font-style: normal;
+    }
+
+    /* figcaption styled as the quote attribution, per fCC figure+figcaption pattern */
+    .quote-band figcaption {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-top: 1.25rem;
+      opacity: 0.75;
+    }
+
+    /* ══ BIOGRAPHY — equivalent of #tribute-info ══ */
+    #tribute-info {
+      background: var(--cream);
+      padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 8vw, 6rem);
+    }
+
+    .bio-inner { max-width: 860px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* fCC pattern: keep title centered, left-align everything else with :not(h3) */
+    #tribute-info h3 { text-align: left; }
+    #tribute-info :not(h3) { text-align: left; line-height: 1.75; }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--deep);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .bio-inner p { font-size: 1rem; color: #333; max-width: 70ch; margin-bottom: 1.5rem; }
+
+    /* ══ TIMELINE — ul/li pattern from fCC "Here's a timeline of X's life" ══ */
+    #timeline {
+      background: var(--plum);
+      padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 8vw, 6rem);
+    }
+
+    #timeline .section-title { color: var(--white); }
+    #timeline .section-eyebrow { color: var(--gold-lt); }
+
+    .timeline-list {
+      list-style: none;
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .timeline-list li {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.4rem 1.5rem;
+      margin: 15px 0; /* fCC spacing pattern: ul li { margin: 15px 0 } */
+      transition: background 0.2s;
+    }
+
+    .timeline-list li:hover { background: rgba(255,255,255,0.1); }
+
+    .timeline-list strong {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700; /* fCC: "lend more weight to bolded words" */
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .tl-desc { font-size: 0.85rem; color: rgba(255,255,255,0.58); }
+
+    /* ══ AWARDS — supplementary styled cards section ══ */
+    .awards-section {
+      background: var(--fog);
+      padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 8vw, 6rem);
+    }
+    .awards-section .section-title { color: var(--plum); }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .award-pill {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .award-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .award-text { font-size: 0.82rem; font-weight: 500; color: var(--text); line-height: 1.35; }
+    .award-count {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ══ FOOTER — fCC pattern: <h3>...read more on Wikipedia <a target="_blank">...</h3> ══ */
+    footer {
+      background: var(--deep);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.9;
+    }
+
+    footer h3 { font-weight: 400; font-size: 0.95rem; margin-bottom: 0.5rem; }
+
+    #tribute-link {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,168,67,0.4);
+    }
+    #tribute-link:hover { border-bottom-color: var(--gold); }
+
+    footer small { display: block; margin-top: 1rem; color: rgba(255,255,255,0.3); font-size: 0.72rem; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 460px) {
+      #title { font-size: 3.5rem; line-height: 1.2; }
+      #main { min-height: 85vh; }
+    }
